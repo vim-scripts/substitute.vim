@@ -1,0 +1,26 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=1167
+
+ Visual and normal mode mappings for easy access to substitutions with the
+ s/// command.
+
+ This script will make it easy to replace the word under the cursor, or the
+ visually selected text across the whole file. If more than one line is
+ selected the substitution will only occur on the selected lines.
+
+Default key mappings:
+
+   ;;  Perform substitution across the whole file.
+
+   ;'  The same, but prompt for each substitution.
+
+ Pressing <C-R><C-R> will insert the text being replaced into the command line
+ window.
+
+ When the search and replace has completed the cursor can be returned to where
+ the search started by jumping to mark ' (pressing '' or `').
+
+Note:
+
+ - The contents of a register (default "9) is overwritten
+
+
