@@ -4,13 +4,13 @@
 " Author: Anders Thøgersen
 " Last Change: 25-Dec-2004
 " Created:     20-Dec-2004
-" Version:     1.0
+" Version:     1.01
 " Licence: This program is free software; you can redistribute it and/or
 "          modify it under the terms of the GNU General Public License.
 "          See http://www.gnu.org/copyleft/gpl.txt 
 "
 " Download From:
-"     http://www.vim.org
+"     http://www.vim.org/scripts/script.php?script_id=1167
 " 
 " Description:
 "
@@ -37,33 +37,15 @@ endif
 
 let loaded_substitute = 1
 
-" Check the mappings
-fun! CheckMapping(map, mode)
-	if hasmapto(a:map, a:mode)
-		echomsg "substitute.vim : keymap " .a:map . " has already been defined for mode " . a:mode . ". quitting..."
-		finish
-	endif
-endfun
-
-" check if mappings exist
-call CheckMapping(';;', 'n')
-call CheckMapping(";'", 'n')
-call CheckMapping(';;', 'v')
-call CheckMapping(";'", 'v')
-call CheckMapping("<C-V>", 'c')
-
 " define the mappings
 nnoremap ;; m'yiw:let @z=':%'.AltSubst(@")<Cr>@z
 nnoremap ;' m'yiw:let @z=':.,$'.AltSubst(@")<Cr>@z
 vnoremap ;; <ESC>:0,'<ma '<CR>gvy:let @z=VisAltSubst('1' . @")<Cr>@z
 vnoremap ;' <ESC>:0,'<ma '<CR>gvy:let @z=VisAltSubst('2' . @")<Cr>@z
 
-if has("gui_running")
-	cmap <C-V> <C-R>+
-else
-	cmap <C-V> <C-R>"
-endif
+cmap <C-V> <C-R>"
 	
+"""""
 fun! GetSubstDelimiter(txt)
 	if stridx(a:txt, '/') == -1
 		return '/'
