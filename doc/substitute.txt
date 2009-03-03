@@ -1,0 +1,93 @@
+*substitute.txt*    Mappings for performing substitution              2009-03-03
+================================================================================
+Author:  Anders Thøgersen <anders [at] bladre.dk>
+Version: 1.1
+================================================================================
+Contents
+
+	1. Purpose..............: |substitute-purpose|
+	2. Mappings.............: |substitute-maps|
+	3. Configuration........: |substitute-config|
+    4. History..............: |substitute-history|
+
+================================================================================
+1. Purpose                                                  *substitute-purpose*
+
+The substitute.vim script provides shortcuts for replacing
+the text under the cursor, or visually selected text in the
+current file.  It is essentially a shortcut to the vim built
+in substitute command; see |:substitute|.
+
+There are two mappings defined: one which will replace text
+across the whole file without prompting, and one which will
+prompt for every replacement.
+
+It should be noted that this script modifies a register when
+one of the mappings is executed.  This register defaults to
+"9 but it can be changed; see |substitute-config|.
+
+================================================================================
+2. Key mappings                                                *substitute-maps*
+
+substitute.vim provides the following two mappings for both
+visual and normal mode:
+
+   ;;  Perform substitution without prompting.
+
+   ;'  Perform substitution and prompt for each.
+
+These mappings can be changed as specified in the following
+section.
+
+It is also possible to press <C-R><C-R> while in command
+line mode to insert the text that is replaced into the 
+commandline.
+
+================================================================================
+3. Configuration                                             *substitute-config*
+
+To change the default mappings to mappings that you like
+better you can change the value of the following variables
+before sourcing the substitute.vim script:
+
+                                                             *substitute-prompt*
+   let g:substitute_PromptMap = ";'"
+
+This variable contains the key sequence for invoking
+substitution that should prompt each time a match is
+found.
+
+                                                           *substitute-noprompt*
+   let g:substitute_NoPromptMap = ';;'
+
+This variable specifies the key sequence for invoking
+substitution without prompting.
+
+                                                           *substitute-register*
+To change the register that is overwritten when executing
+one of the provided mappings you can change the value of
+this variable:
+
+   let g:substitute_Register = '9'
+
+================================================================================
+4. History
+
+   1.1  - Added use of GetLatestVimScripts and fixed a small bug. 
+
+   1.04 - Added a separate helpfile and the possibility of customizing 
+          mappings and the register that the script uses.
+   
+   1.03 - Simplified the mapping a bit. Marking register ' was not needed.
+   
+   1.02 - Changed the meaning of the ;' mapping, and added <unique> to the map
+          definitions.  Added the Escape function so $ and ^ are only escaped
+          when they appear at the beginning, or at the end.  Also added
+          cpoptions check and <SID> stuff.
+   
+   1.01 - Removed unuseful mapcheck.
+
+================================================================================
+$Id: substitute.txt 266 2009-03-03 15:05:50Z alt $
+==============================================================================
+vim:tw=78:ft=help
