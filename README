@@ -7,20 +7,27 @@ This is a mirror of http://www.vim.org/scripts/script.php?script_id=1167
  visually selected text across the whole file. If more than one line is
  selected the substitution will only occur on the selected lines.
 
-Default key mappings:
+substitute.vim provides the following two mappings for both visual and normal
+mode:
 
-   ;;  Perform substitution across the whole file.
+   ;;  Run :substitute on the current buffer without prompting.
 
-   ;'  The same, but prompt for each substitution.
+   ;'  The same, only prompt for each.
 
- Pressing <C-R><C-R> will insert the text being replaced into the command line
- window.
+   ';  Perform substitution on the lines that match a multi-repeat
+       expression, prompting for each.
+
+These mappings can be changed as specified in the following section.
+
+It is also possible to press <C-R><C-R> while in command line mode to insert
+the text that is replaced into the commandline.
 
  When the search and replace has completed the cursor can be returned to where
  the search started by jumping to mark ' (pressing '' or `').
 
-Note:
+ github: https://github.com/aklt/vim-substitute 
 
+Note:
  - The contents of a register (default "9) is overwritten
 
 
